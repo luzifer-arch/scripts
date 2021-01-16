@@ -54,8 +54,10 @@ docker run --rm -i -u $(id -u) \
 }
 
 # Check whether the build is possible
+curl -sSfLo pacman.conf "https://github.com/luzifer-aur/scripts/raw/master/pacman.conf"
 docker run --rm -i \
 	-v "$(pwd):/src" \
+	-v "$(pwd)/pacman.conf:/etc/pacman.conf:ro" \
 	luzifer/arch-repo-builder:latest
 
 # Push changes including tags to fork
