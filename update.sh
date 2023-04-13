@@ -25,8 +25,8 @@ git init
 git config user.email "jenkins@luzifer.io"
 git config user.name "Luzifer.io Jenkins"
 
-# Add AUR as remote
-git remote add origin "git@github.com:luzifer-aur/${PKG}.git"
+# Add Repo as remote
+git remote add origin "git@github.com:luzifer-arch/${PKG}.git"
 
 # Get latest state of remote
 git fetch --all --tags
@@ -54,7 +54,7 @@ docker run --rm -i -u $(id -u) \
 }
 
 # Check whether the build is possible
-curl -sSfLo pacman.conf "https://github.com/luzifer-aur/scripts/raw/master/pacman.conf"
+curl -sSfLo pacman.conf "https://github.com/luzifer-arch/scripts/raw/master/pacman.conf"
 docker run --rm -i \
   -v "$(pwd):/src" \
   -v "$(pwd)/pacman.conf:/etc/pacman.conf:ro" \
