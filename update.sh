@@ -26,7 +26,8 @@ git config user.email "jenkins@luzifer.io"
 git config user.name "Luzifer.io Jenkins"
 
 # Add Repo as remote
-git remote add origin "git@github.com:luzifer-arch/${PKG}.git"
+git remote add origin "https://luzifer:${GITEA_TOKEN}@git.luzifer.io/luzifer-arch/${PKG}.git"
+git remote add github "git@github.com:luzifer-arch/${PKG}.git"
 
 # Get latest state of remote
 git fetch --all --tags
@@ -61,5 +62,6 @@ docker run --rm -i \
   --ulimit nofile=262144:262144 \
   luzifer/arch-repo-builder:latest
 
-# Push changes including tags to fork
-git push origin master
+# Push changes to gitea and if that's blocked to github
+git push origin master ||
+  git push github master
