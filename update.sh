@@ -55,7 +55,7 @@ docker run --rm -i -u $(id -u) \
 }
 
 # Check whether the build is possible
-curl -sSfLo pacman.conf "https://github.com/luzifer-arch/scripts/raw/master/pacman.conf"
+curl -sSfLo pacman.conf "https://git.luzifer.io/luzifer-arch/scripts/raw/branch/master/pacman.conf"
 docker run --rm -i \
   -v "$(pwd):/src" \
   -v "$(pwd)/pacman.conf:/etc/pacman.conf:ro" \
